@@ -1,0 +1,29 @@
+<div class="container">
+  <div *ngFor="let i of rows" class="row text-center">
+    <div *ngFor="let emp of employeesInfo | slice:(i*itemsPerRow):(i+1)*itemsPerRow" class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+          <div [ngSwitch]="emp.designation">
+
+            <img *ngSwitchCase="'Programmer'" class="card-img-top" src="../assets/img/yellow-gentleman.svg" alt="Programmer"
+            [style.background-color]="emp.partOfGroup ? 'greenyellow' : 'gray'" />
+
+          <img *ngSwitchCase="'Senior Programmer'" class="card-img-top" src="../assets/img/orange-gentleman.svg" alt="Senior Programmer"
+            [style.background-color]="emp.partOfGroup ? 'greenyellow' : 'gray'" />
+
+          <img *ngSwitchCase="'Lead'" class="card-img-top" src="../assets/img/blue-gentleman.svg" alt="Lead"
+            [style.background-color]="emp.partOfGroup ? 'greenyellow' : 'gray'" />
+
+          <img *ngSwitchCase="'Manager'" class="card-img-top" src="../assets/img/white-gentleman.svg" alt="Manager" [style.background-color]="emp.partOfGroup ? 'greenyellow' : 'gray'"
+          />
+          </div>
+        <div class="card-body">
+          <h4 class="card-title">{{emp.firstName}} {{emp.lastName}}</h4>
+          <p class="card-text">{{emp.designation}}</p>
+        </div>
+        <div class="card-footer">
+          <a routerLink="/employee/{{emp.employeeId}}" class="btn btn-primary">Find Out More!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
